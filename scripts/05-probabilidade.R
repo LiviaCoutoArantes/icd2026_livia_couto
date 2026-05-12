@@ -70,10 +70,10 @@ mean(lançamentos)  # média observada
 set.seed(123)
 
 # define o n. de lançamentos do dado
-n <- 10 
+n <- 100
 
 # simula os n lançamentos
-lançamentos <- sample(dado, size = 10, replace = TRUE)
+lançamentos <- sample(dado, size = 100, replace = TRUE)
 
 # calcula o valor médio dos 10 lançamentos
 mean(lançamentos)  # média observada
@@ -85,10 +85,10 @@ mean(lançamentos)  # média observada
 set.seed(123)
 
 # define o n. de lançamentos do dado
-n <- 10 
+n <- 1000
 
 # simula os n lançamentos
-lançamentos <- sample(dado, size = 10, replace = TRUE)
+lançamentos <- sample(dado, size = 1000, replace = TRUE)
 
 # calcula o valor médio dos 10 lançamentos
 mean(lançamentos)  # média observada
@@ -100,10 +100,10 @@ mean(lançamentos)  # média observada
 set.seed(123)
 
 # define o n. de lançamentos do dado
-n <- 10 
+n <- 10000
 
 # simula os n lançamentos
-lançamentos <- sample(dado, size = 10, replace = TRUE)
+lançamentos <- sample(dado, size = 10000, replace = TRUE)
 
 # calcula o valor médio dos 10 lançamentos
 mean(lançamentos)  # média observada
@@ -115,10 +115,10 @@ mean(lançamentos)  # média observada
 set.seed(123)
 
 # define o n. de lançamentos do dado
-n <- 10 
+n <- 100000
 
 # simula os n lançamentos
-lançamentos <- sample(dado, size = 10, replace = TRUE)
+lançamentos <- sample(dado, size = 100000, replace = TRUE)
 
 # calcula o valor médio dos 10 lançamentos
 mean(lançamentos)  # média observada
