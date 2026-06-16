@@ -1,0 +1,178 @@
+---
+lang: pt-BR
+title: "Resolução da Lista de Exercícios 6"
+author: "Lívia Couto Arantes"
+date: today
+format:
+  html:
+    theme: flatly
+    embed-resources: true
+    toc: true
+execute:
+  eval: true
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+
+# Exibe valores numéricos sem notação científica
+options(digits = 5, scipen = 999)
+
+# pacotes utilizados
+library(here)
+library(tidyverse)
+library(tidyplots)
+
+# Permite que os gráficos do tidyplots usem o espaço disponível no HTML
+tidyplots_options(width = NA, height = NA)
+
+# Importa o objeto dados_marketing_limpos.rds
+caminho_dados <- here("dados/limpos/dados_marketing_limpos.rds")
+dados_marketing <- read_rds(caminho_dados)
+```
+
+
+
+## Exercício 1
+
+
+**a.**
+
+```{r}
+
+# Gasto total médio e mediano
+dados_marketing |> 
+  summarize(
+    media = mean(gasto_total),
+    
+    mediana = median(gasto_total)
+  )
+```
+
+
+
+**b.**
+
+```{r}
+# Desvio-padrão e IQR do gasto total
+dados_marketing |> 
+  summarize(
+    desvio_padrao = sd(gasto_total),
+    
+    iqr = IQR(gasto_total)
+  )
+```
+
+
+
+**c.**
+
+```{r}
+# Quantis amostrais
+dados_marketing |> 
+  summarize(
+    p5 = quantile(gasto_total, 0.05),
+    q1 = quantile(gasto_total, 0.25),
+    mediana = quantile(gasto_total, 0.50),
+    q3 = quantile(gasto_total, 0.75),
+    p95 = quantile(gasto_total, 0.95)
+  )
+```
+
+Interpretação:
+
+- **p5**: o percentil p5 mostra que durante o período analisado, o gasto total
+em marketing foi menor ou igual a 84,14 mil dólares em 5% das semanas e foi
+maior que esse valor em 95% das semanas.
+
+- **q1**: o percentil q1 mostra que durante o perído analisado, o gasto total
+em marketing foi menor ou igual a 99,56 mil dólares em 25% das semanas e foi
+maior que esse valor em 75% das semanas.
+
+- **mediana**: o percentil mediana mostra que durante o perído analisado, o 
+gasto total em marketing foi menor ou igual a 110,25 mil dólares em 50% das 
+semanas e foi maior que esse valor em 50% das semanas.
+
+- **q3**:o percentil q3 mostra que durante o perído analisado, o 
+gasto total em marketing foi menor ou igual a 122,13 mil dólares em 75% das 
+semanas e foi maior que esse valor em 25% das semanas.
+
+- **p95**:o percentil p95 mostra que durante o perído analisado, o 
+gasto total em marketing foi menor ou igual a 152,49 mil dólares em 95% das 
+semanas e foi maior que esse valor em 5% das semanas.
+
+
+
+
+**d.** 
+
+
+
+
+## Exercício 2
+
+
+```{r}
+# Dados sobre o desempenho semanal (R$ mil) de duas equipes de vendas
+desempenho_equipes <- tibble(
+  equipe = rep(c("A", "B"), each = 10),
+  desempenho = c(85, 92, 78, 110, 95, 105, 115, 98, 102, 250,
+                 120, 115, 125, 118, 122, 130, 115, 120, 125, 122)
+)
+```
+
+
+**a.** 
+
+
+
+
+**b.** 
+
+
+
+
+## Exercício 3
+
+
+**a.** 
+
+
+
+**b.** 
+
+
+
+**c.**
+
+
+
+
+**d.**
+
+
+
+
+## Exercício 4
+
+
+**a.**
+
+
+
+
+**b.** 
+
+
+
+
+**c.**
+
+
+
+
+**d.**
+

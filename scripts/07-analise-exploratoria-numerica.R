@@ -116,6 +116,61 @@ quantis_receita
 
 
 
+# Variabilidade da receita ------------------------------------------------
+
+
+# Resumo com medidas amostrais de variabilidade
+estatisticas_variabilidade <- dados_marketing |> 
+  summarize(
+    #Amplitude amostral
+    amplitude = max(receita_vendas) - min(receita_vendas),
+    
+    #Variância amostral
+    variancia = var(receita_vendas),
+    
+    #Desvio-padrão amostral
+    desvio_padrao = sd(receita_vendas),
+    
+    #Intervalo interquartil amostral
+    iqr = IQR(receita_vendas)
+  )
+
+# Exibe o resumo calculado
+estatisticas_variabilidade
+
+
+
+# Coeficiente de variação -------------------------------------------------
+
+
+# Resumo com média, desvio-padrão e CV amostrais
+cv_receita <- dados_marketing |> 
+  summarize(
+    #Média amostral
+    media = mean(receita_vendas),
+    
+    #Desvio-padrão amostral
+    desvio_padrao = sd(receita_vendas),
+    
+    #CV amostral percentual
+    cv_percentual = 100 * desvio_padrao / media
+  )
+
+# Exibe o coeficiente de variação
+cv_receita
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
