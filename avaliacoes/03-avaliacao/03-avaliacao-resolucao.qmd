@@ -1,0 +1,229 @@
+---
+title: "Resolução da Avaliação 3 (34 pontos)"
+subtitle: "Introdução à Ciência de Dados <br> Bacharelado em Administração"
+lang: pt-BR
+author: 
+- Lívia Couto Arantes
+- Letícia Paôla de Souza
+
+date: "2026-07-06"
+title-block-banner: "#27445C"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    toc-depth: 2
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| echo: false
+#| include: false
+
+# não exibe números em notação científica
+options(digits = 5, scipen = 999)
+
+# pacotes utilizados
+library(here)
+library(tidyverse)
+library(tidyplots)
+
+# Permite que os gráficos do tidyplots usem o espaço disponível
+tidyplots_options(width = NA, height = NA)
+
+# Guarda o caminho do arquivo CSV dentro do projeto RStudio
+caminho_dados <- here("dados/brutos/belezar_vendas_diarias.csv")
+
+# Lê o arquivo CSV e cria o objeto dados_belezar
+dados_belezar <- read_csv(caminho_dados)
+```
+
+
+
+# Questão 1 
+
+
+**a)** 
+
+```{r}
+dados_belezar |> 
+  summarise(
+    media = mean(receita),
+    mediana = median(receita),
+    desvio_padrão = sd(receita),
+    q1 = quantile(receita, 0.25),
+    q3 = quantile(receita, 0.75),
+    p90 = quantile(receita, 0.90)
+  )
+  
+```
+
+
+**b)**
+
+A média descreve melhor a receita de um dia típico da empresa sendo US$ 10.274
+Porque a média tem influência dos valores altos e a mediana é menos afetada por
+valores muitos altos ou baixos e ela representa o centro da distribuição.
+
+**c)**
+
+O percentil 90 mostra que durante o período analisado,a receita foi menor ou
+igual a US$ 16.08 mil em 90% dos dias e foi maior que esse valor em 10% dos 
+dias.
+
+
+# Questão 2
+
+**a)** 
+
+```{r}
+dados_belezar |> 
+  tidyplot(x = receita) |> 
+  add_histogram(bins = 10, fill = "steelblue") |> 
+  adjust_x_axis_title("Receita (em US$ mil)") |>
+  adjust_y_axis_title("Número de dias") |>
+  add_caption("Fonte: dados simulados pelo professor.") |> 
+  adjust_font(fontsize = 14)
+```
+
+
+
+**b)**
+
+A forma de distribuição é assimétrica e o lado da cauda é para o lado direito.
+
+A faixa de valor em que se concentra a maior parte dos dias é aproximadamente
+US$ 15 mil.
+
+
+
+
+# Questão 3
+
+
+**a)** 
+
+```{r}
+dados_belezar |> 
+  tidyplot(x = status_promocao, y = receita) |> 
+  add_boxplot() |> 
+  adjust_x_axis_title("Atividade do concorrente") |> 
+  adjust_y_axis_title("Receita (em US$ mil)") |> 
+  add_caption("Fonte: dados simulados pelo professor.") |> 
+  adjust_font(fontsize = 14)
+```
+
+
+**b)**
+
+O grupo que apresenta receita maior foi o grupo "Com promoção", pois
+está mais para cima no gráfico.
+
+A maior variabilidade foi do grupo "Com promoção" pois o tamanho da altura da
+caixa é maior do que a do grupo "Sem promoção".
+
+
+# Questão 4
+
+
+A. [ ]
+
+ 
+B. [ ]
+
+
+C. [X]
+
+
+D. [ ]
+
+
+
+
+# Questão 5
+
+
+A. [ ]
+
+ 
+B. [X]
+
+
+C. [ ]
+
+
+D. [ ]
+
+
+
+
+# Questão 6
+
+
+A. [ ]
+
+ 
+B. [ ]
+
+
+C. [ ]
+
+
+D. [X]
+
+
+
+
+# Questão 7
+
+
+A. [ ]
+
+ 
+B. [X]
+
+
+C. [ ]
+
+
+D. [ ]
+
+
+
+
+# Questão 8
+
+
+
+A. [X]
+
+ 
+B. [ ]
+
+
+C. [ ]
+
+
+D. [ ]
+
+
+
+
+# Questão 9
+
+
+
+A. [ ]
+
+ 
+B. [ ]
+
+
+C. [X]
+
+
+D. [ ]
